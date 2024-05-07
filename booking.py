@@ -1,6 +1,7 @@
 from datetime import date
 
 class Booking:
+    
     def __init__(self):
         self.bookings = {}
     

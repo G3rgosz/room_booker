@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 class Room(ABC):
+
     def __init__(self, price, room_number):
         self.price = price
         self.room_number = room_number
@@ -10,6 +11,7 @@ class Room(ABC):
         pass
 
 class SingleRoom(Room):
+
     def __init__(self, price, room_number):
         super().__init__(price, room_number)
     
@@ -17,6 +19,7 @@ class SingleRoom(Room):
         return self.price
 
 class DoubleRoom(Room):
+    
     def __init__(self, price, room_number):
         super().__init__(price, room_number)
     
