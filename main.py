@@ -27,25 +27,25 @@ def user_interface():
         print("4 - Kilépés\n")
 
         choice = input("Kérjük, válasszon egy opciót: ")
-        print() 
 
         if choice == '1':
-            room_number = int(input("Szobaszám: "))
+            hotel.list_rooms()
+            room_number = int(input("\nVálasztott szobaszám: "))
             booking_date = input("Dátum (YYYY-MM-DD): ")
             result = booking.book(room_number, date.fromisoformat(booking_date), hotel)
             print(result)
         elif choice == '2':
-            room_number = int(input("Szobaszám: "))
+            room_number = int(input("\nSzobaszám: "))
             booking_date = input("Dátum (YYYY-MM-DD): ")
             result = booking.cancel_booking(room_number, date.fromisoformat(booking_date))
             print(result)
         elif choice == '3':
-            print(booking.list_bookings())
+            print(f"\n{booking.list_bookings()}")
         elif choice == '4':
-            print("Kilépés a programból.")
+            print("\nKilépés a programból.")
             break
         else:
-            print("Érvénytelen választás. Próbálja újra.")
+            print("\nÉrvénytelen választás. Próbálja újra.")
 
 if __name__ == "__main__":
     loader()
