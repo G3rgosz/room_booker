@@ -1,0 +1,3 @@
+név: Szivák Gergő
+szak: Mérnökinformatikus
+neptun-kód: CDTQK5
