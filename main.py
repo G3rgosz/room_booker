@@ -29,15 +29,31 @@ def user_interface():
         choice = input("Kérjük, válasszon egy opciót: ")
 
         if choice == '1':
-            hotel.list_rooms()
-            room_number = int(input("\nVálasztott szobaszám: "))
-            booking_date = input("Dátum (YYYY-MM-DD): ")
-            result = booking.book(room_number, date.fromisoformat(booking_date), hotel)
+            while True:
+                try:
+                    hotel.list_rooms()
+                    room_number = int(input("\nVálasztott szobaszám: "))
+                    booking_date = input("Dátum (YYYY-MM-DD): ")
+                    booking_date = date.fromisoformat(booking_date)
+                    if booking_date < date.today():
+                        raise ValueError("A dátum nem lehet a mai napnál korábbi.")
+                    break
+                except ValueError as e:
+                    print(f"Hiba: {e}\nKérjük, adjon meg helyes adatokat.\n")
+            result = booking.book(room_number, booking_date, hotel)
             print(result)
         elif choice == '2':
-            room_number = int(input("\nSzobaszám: "))
-            booking_date = input("Dátum (YYYY-MM-DD): ")
-            result = booking.cancel_booking(room_number, date.fromisoformat(booking_date))
+            while True:
+                try:
+                    room_number = int(input("\nSzobaszám: "))
+                    booking_date = input("Dátum (YYYY-MM-DD): ")
+                    booking_date = date.fromisoformat(booking_date)
+                    if booking_date < date.today():
+                        raise ValueError("A dátum nem lehet a mai napnál korábbi.")
+                    break
+                except ValueError as e:
+                    print(f"Hiba: {e}\nKérjük, adjon meg helyes adatokat.\n")
+            result = booking.cancel_booking(room_number, booking_date)
             print(result)
         elif choice == '3':
             print(f"\n{booking.list_bookings()}")
